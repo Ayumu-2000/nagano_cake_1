@@ -1,0 +1,7 @@
+
+
+<%= link_to "log out", destroy_admin_session_path, method: :delete %><br >
+<%- if controller_name != 'sessions' %>
+    <%= link_to "Log in", new_session_path(resource_name) %><br />
+<% end %>
+
