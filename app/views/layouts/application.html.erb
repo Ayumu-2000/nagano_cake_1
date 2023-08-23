@@ -23,7 +23,7 @@
         <%= link_to "注文履歴" %>
       </li>
       <li>
-        <%= link_to "ログアウト" %>
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
       </li>
       <% elsif customer_signed_in? %>
       <li>
@@ -36,11 +36,11 @@
         <%= link_to "カート" %>
       </li>
       <li>
-        <%= link_to "ログアウト" %>
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
       </li>
       <% else %>
       <li>
-        <%= link_to "About" %>
+        <%= link_to "About", about_path %>
       </li>
       <li>
         <%= link_to "商品一覧" %>
