@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   end
   
   namespace :public do
-    get 'items/index'
-    get 'items/show'
+    resources :customers, only: [:show, :edit]
+    resources :items, only: [:index, :show]
   end
   
   devise_for :customers, skip: [:passwords], controllers: {
