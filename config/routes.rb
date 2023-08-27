@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   scope module: :public do
     get '/customers' => 'customers#show'
     get '/customers/edit' => 'customers#edit'
-    patch '/customers' => 'customers#update'
+    patch '/customers' => 'customers#update', as: 'update'
     patch '/customers/out' => 'customers#out'
     resources :items, only: [:index, :show]
   end
