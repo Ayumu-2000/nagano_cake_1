@@ -1,0 +1,7 @@
+ <!--会員ID  ステータス-->
+<h1>会員一覧</h1>
+<% @customers.each do |customer| %>
+  <%= customer.first_name %>
+  <%= customer.last_name %>
+  <%= customer.email %>
+<% end %>
