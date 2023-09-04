@@ -14,9 +14,9 @@ class Admin::CustomersController < ApplicationController
   def update
      @customer = Customer.find(params[:id])
      if @customer.update(customer_params)
-       redirect_to 
+       redirect_to admin_item_path(@item.id)
      else
-       
+       render :edit
      end 
   end
   
