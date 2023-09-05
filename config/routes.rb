@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
+    get '/cart_items' => 'cart_items#index'
     get '/customers' => 'customers#show'
     get '/customers/edit' => 'customers#edit'
     patch '/customers' => 'customers#update', as: 'update'

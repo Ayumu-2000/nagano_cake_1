@@ -1,5 +1,5 @@
 <h1>会員詳細</h1>
-<%= link_to "編集する", edit_admin_customer_path %><br>
+<%= link_to "編集する", edit_admin_customer_path(@customer.id) %><br>
 
 <label for="first_name">名</label><br>
     <%= @customer.first_name %>
