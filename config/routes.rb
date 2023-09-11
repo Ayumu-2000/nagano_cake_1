@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
   scope module: :public do
     get '/cart_items' => 'cart_items#index'
+    post '/cart_items' => 'cart_items#create'
+    patch '/cart_items/:id' => 'cart_items#update'
+    delete '/cart_items/:id' => 'cart_items#destroy'
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
     get '/customers' => 'customers#show'
     get '/customers/edit' => 'customers#edit'
     patch '/customers' => 'customers#update', as: 'update'

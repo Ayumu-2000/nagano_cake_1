@@ -1,2 +1,28 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<h1>ショッピングカート</h1>
+<table> 
+  <thead>
+    <th>商品名</th>
+    <th>単価(税込)</th>
+    <th>数量</th>
+    <th>小計</th>
+  </thead>
+  <tbody>
+    <tr>
+        <% if @cart_item.customer == current_customer %>
+            <%= link_to "カートを空にする", cart_items_destroy_all_path(@cart_items), method: :delete %>
+        <% end %>
+    </tr>
+  <%  @cart_items.each do |cart_item| %>
+    <tr>
+      <tb><%= cart_item.item.name %></tb>
+      <td><%= cart_item.item.with_tax_price %></td>
+      <tb><%= cart_item.amount %></tb>
+      <td><%= cart_item.subtotal %></td>
+      <% @cart_items += cart_item.subtotal %>
+      <% if @cart_item.customer == current_customer %>
+        <%= link_to "削除する", cart_items_path(@cart_item), method: :delete %>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
