@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
+    get '/orders/new' => 'orders#new'
+    post '/orders/check' => 'orders#check'
+    get '/orders/finish' => 'orders#finish'
+    post '/orders' => 'orders#create'
+    get '/orders' => 'orders#index'
+    get '/orders/:id' => 'orders#show'
     get '/cart_items' => 'cart_items#index'
     post '/cart_items' => 'cart_items#create'
     patch '/cart_items/:id' => 'cart_items#update'
