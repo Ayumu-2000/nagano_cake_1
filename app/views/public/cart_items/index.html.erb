@@ -1,5 +1,5 @@
 <h1>ショッピングカート</h1>
-<table> 
+<table>
   <thead>
     <th>商品名</th>
     <th>単価(税込)</th>
@@ -8,9 +8,7 @@
   </thead>
   <tbody>
     <tr>
-        <% if @cart_item.customer == current_customer %>
-            <%= link_to "カートを空にする", cart_items_destroy_all_path(@cart_items), method: :delete %>
-        <% end %>
+      <%= link_to "カートを空にする", cart_items_destroy_all_path(@cart_items), method: :delete %>
     </tr>
   <%  @cart_items.each do |cart_item| %>
     <tr>
@@ -19,9 +17,7 @@
       <tb><%= cart_item.amount %></tb>
       <td><%= cart_item.subtotal %></td>
       <% @cart_items += cart_item.subtotal %>
-      <% if @cart_item.customer == current_customer %>
-        <%= link_to "削除する", cart_items_path(@cart_item), method: :delete %>
-      <% end %>
+      <%= link_to "削除する", cart_items_path(@cart_item), method: :delete %>
     </tr>
   <% end %>
   </tbody>

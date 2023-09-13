@@ -6,5 +6,14 @@
   <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
   <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer] %>
   <h4>お届け先</h4>
-  
+  <%= f.submit "確認画面へ進む" %>
 <% end %>
+  
+  <h4>お届け先</h4>
+  <%= @customer.postal_code %>
+  <%= @customer.address %>
+  <%= @customer.last_name %>
+  <%= @customer.first_name %>
+  
+  
+  

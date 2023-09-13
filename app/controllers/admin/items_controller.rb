@@ -2,15 +2,18 @@ class Admin::ItemsController < ApplicationController
   def new
     @item = Item.new
   end
-  
+
   def create
     @item = Item.new(item_params)
-    @item.save
-    redirect_to admin_item_path(@item.id)
+    if @item.save
+      redirect_to admin_item_path(@item.id)
+    else
+      render :new
+    end
   end
 
   def show
-    @ietm = Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def index
@@ -20,7 +23,7 @@ class Admin::ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
   end
-  
+
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
@@ -29,11 +32,11 @@ class Admin::ItemsController < ApplicationController
       render :edit
     end
   end
-  
-  
-  private 
-  
+
+
+  private
+
   def item_params
-    params.require(:item).permit(:name, :introduction, :price)
+    params.require(:item).permit(:name, :introduction, :price, :item_image)
   end
 end

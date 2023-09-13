@@ -1,7 +1,24 @@
  <!--会員ID  ステータス-->
 <h1>会員一覧</h1>
-<% @customers.each do |customer| %>
-  <%= customer.first_name %>
-  <%= customer.last_name %>
-  <%= customer.email %>
-<% end %>
+
+<table>
+    <thead>
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+    </thead>
+    <tbody>
+        <tr>
+            <% @customers.each do |customer| %>
+            <tb></tb>
+            <tb>
+                <%= customer.first_name %>
+                <%= customer.last_name %>
+            </tb>
+            <tb><%= customer.email %></tb>
+            <tb></tb>
+            <% end %>
+        </tr>
+    </tbody>
+</table>

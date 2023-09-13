@@ -1,6 +1,7 @@
 class Public::OrdersController < ApplicationController
   def new 
     @order = Order.new
+    @current = current_customer
   end
   
   def chech 

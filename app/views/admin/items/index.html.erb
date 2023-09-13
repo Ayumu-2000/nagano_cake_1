@@ -1,10 +1,13 @@
 <h1>商品一覧</h1>
+<%= %>
 <% @items.each do |item| %>
     <%= image_tag item.get_item_image(100,100) %>
     <!--商品id-->
 
-    <% link_to admin_item_path(item.id) do %>
+    <%= link_to admin_item_path(item.id) do %><br>
         <%= item.name %>
     <% end %>
-    <%= item.price %>
+    <%= item.price %><br>
 <% end %>
+
+<%= link_to "商品登録", new_admin_item_path %>
