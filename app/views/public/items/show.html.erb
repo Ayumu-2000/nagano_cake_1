@@ -8,8 +8,7 @@
   <%= @item.price %>
 
   <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
-    <%= f.hidden_field :name, :value => @item.name %>
-    <%= f.hidden_field :price, :value => @item.price %>
+    <%= f.hidden_field :item_id, :value => @item.id %>
     <%= f.select :amount, *[1..3] %>
     <%= f.submit "カートに入れる" %>
   <% end %>

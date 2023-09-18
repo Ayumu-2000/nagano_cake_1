@@ -12,12 +12,17 @@
     </tr>
   <%  @cart_items.each do |cart_item| %>
     <tr>
-      <tb><%= cart_item.item.name %></tb>
+      <td><%= cart_item.item.name %></td>
       <td><%= cart_item.item.with_tax_price %></td>
-      <tb><%= cart_item.amount %></tb>
       <td><%= cart_item.subtotal %></td>
-      <% @cart_items += cart_item.subtotal %>
-      <%= link_to "削除する", cart_items_path(@cart_item), method: :delete %>
+      <td>
+        <%= form_with model: cart_item, url: cart_items_path(cart_item), local: true, method: :patch do |f| %>
+           <%= f.select :amount, *[1..3] %>
+           <%= f.submit "変更" %>
+        <% end %>
+      </td>
+      <!-- % @合計金額 += cart_item.subtotal %> -->
+      <td><%= link_to "削除する", cart_items_path(@cart_item), method: :delete %></td>
     </tr>
   <% end %>
   </tbody>
