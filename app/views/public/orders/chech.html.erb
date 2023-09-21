@@ -1,0 +1,42 @@
+<h1>注文情報確認</h1>
+<table>
+  <thead>
+    <th>商品名</th>
+    <th>単価(税込)</th>
+    <th>数量</th>
+    <th>小計</th>
+    <th></th>
+  </thead>
+  <tbody>
+  <%  @cart_items.each do |cart_item| %>
+    <tr>
+      <td><%= cart_item.item.name %></td>
+      <td><%= cart_item.item.with_tax_price %></td>
+      <td>
+        <%= form_with model: cart_item, local: true, method: :patch do |f| %>
+           <%= f.select :amount, *[1..3] %>
+           <%= f.submit "変更" %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  <th>合計金額</th>
+    <td>
+      <%= @total %>
+    </td>
+  </tbody>
+</table>
+<%= form_with model: @order, url: orders_path, method: :post do |f| %>
+  <tr>
+  <th>支払い方法</th>
+  <td><%= f.payment_method %></td>
+ </tr>
+ <tr>
+   <th>お届け先</th>
+   <td>
+    <%= f.postal_code %>
+    <%= f.address %>
+    <%= f.delivery_name %>
+   </td>
+  </tr>
+<% end %>
