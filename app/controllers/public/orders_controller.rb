@@ -19,27 +19,31 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @total = 0
+    @order.delivery_price = 800
+    @order.payment_price = 0
     current_customer.cart_items.each do |cart_item|
-　　  @ordered_item = OrderItem.new
-　　  @ordered_item.order_id =  @order.id
+    @order.payment_price = @order.payment_price + cart_item.subtotal
+    end
+    @order.save!
+    current_customer.cart_items.each do |cart_item|
+      @ordered_item = OrderItem.new
+      @ordered_item.order_id =  @order.id
       @ordered_item.item_id = cart_item.item_id
       @ordered_item.amount = cart_item.amount
-      @total = @total + cart_item.subtotal
-      @ordered_item.save
-    end #ループ終わり
-    @ordered_item.purchase_price = @total
-    current_member.cart_items.destroy_all
-    @ordered_item.save
-    render :finish
+      @ordered_item.purchase_price = cart_item.item.price
+      @ordered_item.save!
+    end
+    current_customer.cart_items.destroy_all
+    redirect_to orders_finish_path
   end
 
   def index
-
+    @orders = current_customer.orders
   end
 
   def show
-
+    @order = Order.find(params[:id])
+    @ordered_items = @order.order_item
   end
 
 
