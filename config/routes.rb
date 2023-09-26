@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items, only: [:new, :show, :index, :edit, :create, :update]
+    resources :orders, only: [:show]
   end
 
   scope module: :public do
