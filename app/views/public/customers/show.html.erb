@@ -1,6 +1,4 @@
-<h1>登録情報</h1>
-
-<%= link_to "編集する", customers_edit_path %><br>
+<h1><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h1>
 
 <label for="first_name">名</label><br>
     <%= @customer.first_name %>
@@ -26,3 +24,5 @@
   <label for="email">メールアドレス</label><br>
     <%= @customer.email %>
 
+<%= link_to "編集する", customers_edit_path %>
+<%= link_to "注文履歴一覧を見る", orders_path %>

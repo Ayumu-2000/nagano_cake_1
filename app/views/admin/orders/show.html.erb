@@ -1,9 +1,12 @@
 <h1>注文履歴詳細</h1>
 <!--購入者　注文日　配送先　支払方法-->
-<h4>購入者</h4><%= @order.delivery_name %><br />
-<h4>注文日</h4><%= @order.created_at.strftime('%Y/%m/%d') %><br />
-<h4>配送先</h4>〒<%= @order.postal_code %><%= @order.address %><br />
-<h4>支払方法</h4><%= @order.payment_method %><br />
+<h4>購入者</h4>
+<%= link_to admin_customer_path(@order.customer.id) do %>
+    <%= @order.delivery_name %><br>
+<% end %>
+<h4>注文日</h4><%= @order.created_at.strftime('%Y/%m/%d') %><br>
+<h4>配送先</h4>〒<%= @order.postal_code %><%= @order.address %><br>
+<h4>支払方法</h4><%= @order.payment_method %><br>
 <!--商品名 単価（税込） 数量 小計-->
 <table>
     <thead>
@@ -22,3 +25,7 @@
     </tbody>
 </table>
 <!--商品合計 送料 請求金額合計-->
+<h4>商品合計</h4><%= @order.payment_price %>
+<h4>送料</h4><%= @order.delivery_price %>
+<% @total = @order.payment_price + @order.delivery_price %>
+<h4>請求金額合計</h4><%= @total %>
