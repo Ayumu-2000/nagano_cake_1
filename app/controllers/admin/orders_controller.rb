@@ -3,7 +3,11 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_items =  @order.order_items
   end
-  
+
+
   private
-  params.require(:order).permit(:customer_id, :postal_code, :address, :delivery_name, :delivery_price, :payment_price, :payment_method)
+
+  def order_params
+    params.require(:order).permit(:customer_id, :postal_code, :address, :delivery_name, :delivery_price, :payment_price, :payment_method)
+  end
 end
