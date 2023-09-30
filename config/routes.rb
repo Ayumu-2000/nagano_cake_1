@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     get '/orders/finish' => 'orders#finish'
     post '/orders' => 'orders#create'
     get '/orders' => 'orders#index'
-    get '/orders/:id' => 'orders#show'
+    get '/orders/:id' => 'orders#show', as: :order
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
     delete '/cart_items/:id' => 'cart_items#destroy', as: :cart_item
     get '/cart_items' => 'cart_items#index'
@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     #delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
     get '/customers' => 'customers#show'
     get '/customers/edit' => 'customers#edit'
+    get '/customers/check' => ''
     patch '/customers' => 'customers#update', as: 'update'
     patch '/customers/out' => 'customers#out'
     resources :items, only: [:index, :show]

@@ -1,13 +1,63 @@
 <h1>注文履歴詳細</h1>
 <table>
-  <h4>注文情報</h4>
-  
+  <thead>
+     <h4>注文情報</h4>
+  </thead>
+  <tbody>
+    <tr>
+      <td>注文日</td>
+      <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+    </tr>
+    <tr>
+      <td>配送先</td>
+      <td>
+        〒<%= @order.postal_code %><br>
+        <%= @order.address %><br>
+        <%= @order.delivery_name %>
+      </td>
+    </tr>
+    <tr>
+      <td>支払い方法</td>
+      <td><%= @order.payment_method_i18n %></td>
+    </tr>
+  </tbody>
 </table>
 <table>
-  <h4>請求情報</h4>
-  
+  <thead>
+    <h4>請求情報</h4>
+  </thead>
+  <tbody>
+    <tr>
+      <td>商品合計</td>
+      <td><%= @order.payment_price %></td>
+    </tr>
+    <tr>
+      <td>配送料</td>
+      <td><%= @order.delivery_price %></td>
+    </tr>
+    <tr>
+      <td>ご請求額</td>
+      <% @total = @order.payment_price + @order.delivery_price %>
+      <td><%= @total %></td>
+    </tr>
+  </tbody>
 </table>
 <table>
-  <h4>注文内容</h4>
-  
+  <thead>
+    <h4>注文内容</h4>
+    <th>商品</th>
+    <th>単価（税込）</th>
+    <th>個数</th>
+    <th>小計</th>
+  </thead>
+  <tbody>
+    <% @ordered_items.each do |order_item| %>
+    <tr>
+      <td><%= order_item.item.name %></td>
+      <td><%= order_item.purchase_price %></td>
+      <td><%= order_item.amount %></td>
+      <td><%= order_item.subtotal %></td>
+    </tr>
+    <% end %>
+  </tbody>
 </table>
