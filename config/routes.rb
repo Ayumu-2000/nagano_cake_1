@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     #delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
     get '/customers' => 'customers#show'
     get '/customers/edit' => 'customers#edit'
-    get '/customers/check' => ''
+    get '/customers/check' => 'customers#check'
     patch '/customers' => 'customers#update', as: 'update'
     patch '/customers/out' => 'customers#out'
     resources :items, only: [:index, :show]

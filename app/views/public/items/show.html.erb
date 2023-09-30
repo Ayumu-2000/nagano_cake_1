@@ -1,11 +1,8 @@
 <h1>商品詳細</h1>
   <%= image_tag @item.get_item_image(100,100) %>
-  <h4>商品名</h4>
-  <%= @item.name %>
-  <h4>商品説明</h4>
-  <%= @item.introduction %>
-  <h4>税込価格(税抜価格)</h4>
-  <%= @item.price %>
+  <h4><%= @item.name %></h4>
+  <p><%= @item.introduction %></p>
+  <h4>¥ <%= @item.with_tax_price %>（税込）</h4>
 
   <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
     <%= f.hidden_field :item_id, :value => @item.id %>

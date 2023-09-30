@@ -15,6 +15,10 @@ class Public::CustomersController < ApplicationController
        render :edit
     end
   end
+  
+  def check
+    @customer = current_customer
+  end
 
   def out
     @customer = current_customer
