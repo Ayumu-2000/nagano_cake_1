@@ -9,7 +9,7 @@
   </thead>
   <tbody>
     <tr>
-      <%= link_to "カートを空にする", cart_items_destroy_all_path(@cart_items), method: :delete %>
+      <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete %>
     </tr>
   <%  @cart_items.each do |cart_item| %>
     <tr>
