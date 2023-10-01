@@ -2,6 +2,7 @@
 <p>管理者トップページ</p>
 <table>
   <thead>
+    <th>会員ID</th>
     <th>購入日時</th>
     <th>購入者</th>
     <th>注文個数</th>
@@ -9,6 +10,7 @@
   <tbody>
     <% @orders.each do |order| %>
     <tr>
+      <td><%= order.id %></td>
       <td>
         <%= link_to admin_order_path(order.id) do %>
           <%= order.created_at.strftime('%Y/%m/%d') %>

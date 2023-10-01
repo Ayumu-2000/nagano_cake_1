@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     get '/customers' => 'customers#show'
     get '/customers/edit' => 'customers#edit'
     get '/customers/check' => 'customers#check'
-    patch '/customers' => 'customers#update', as: 'update'
+    patch '/customers' => 'customers#update', as: :update
     patch '/customers/out' => 'customers#out'
     resources :items, only: [:index, :show]
   end

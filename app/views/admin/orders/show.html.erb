@@ -17,10 +17,12 @@
     </thead>
     <tbody>
         <% @order_items.each do |order_item| %>
+        <tr>
           <td><%= order_item.item.name %></td>
           <td><%= order_item.purchase_price %></td>
           <td><%= order_item.amount %></td>
           <td><%= order_item.subtotal %></td>
+        </tr>
         <% end %>
     </tbody>
 </table>

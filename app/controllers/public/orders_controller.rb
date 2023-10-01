@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
   def new
+    is_cart_item_nill
     @order = Order.new
   end
 
@@ -30,7 +31,7 @@ class Public::OrdersController < ApplicationController
       @ordered_item.order_id =  @order.id
       @ordered_item.item_id = cart_item.item_id
       @ordered_item.amount = cart_item.amount
-      @ordered_item.purchase_price = cart_item.item.price
+      @ordered_item.purchase_price = cart_item.item.with_tax_price
       @ordered_item.save!
     end
     current_customer.cart_items.destroy_all
@@ -51,6 +52,13 @@ class Public::OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:customer_id, :postal_code, :address, :delivery_name, :delivery_price, :payment_price, :payment_method)
+  end
+
+  def is_cart_item_nill
+    cnt =  current_customer.cart_items.count
+   if cnt == 0
+     redirect_to cart_items_path
+   end
   end
 
 end
