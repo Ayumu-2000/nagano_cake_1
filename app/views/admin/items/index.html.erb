@@ -1,13 +1,29 @@
-<h1>商品一覧</h1>
-
-<% @items.each do |item| %>
-    <%= image_tag item.get_item_image(100,100) %>
-    <!--商品id-->
-
-    <%= link_to admin_item_path(item.id) do %><br>
-        <%= item.name %>
-    <% end %>
-    <%= item.price %><br>
-<% end %>
-
-<%= link_to "商品登録", new_admin_item_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-8">
+      <h1>商品一覧</h1>
+      <%= link_to "商品登録", new_admin_item_path %>
+      <table>
+          <thead>
+              <th>商品ID</th>
+              <th>商品名</th>
+              <th>税抜価格</th>
+          </thead>
+          <tbody>
+              <% @items.each do |item| %>
+                  <tr>
+                      <td><%= item.id %></td>
+                      <td>
+                          <%= link_to admin_item_path(item.id) do %>
+                              <%= item.name %>
+                          <% end %>
+                        </td>
+                      <td><%= item.price %></td>
+                  </tr>
+              <% end %>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>
